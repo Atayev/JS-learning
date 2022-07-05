@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <ul id="we"></ul>
+        <p>
+            
+        </p>
+    <script>
+        const we=document.getElementById("we")
+        //let arr = new Array()
+        let arr = ["heyder","esli","ibo"]
+        //  arr.push("bobby") neyise salmaq arraya
+        // arr.pop() neyise arraydan chixarmaq
+        // arr[5]="dobby"
+        // arr.slice(-2)
+        // string.split (stringin arraya chevrilmesi)
+        // arr.join (arrayin stringe chevrilmesi)
+        // arr.splice  silmek elave etmek hansisa reqemnen etibaren
+        // arr.sort() Siralamaq uchun
+
+        let kod=''
+        for (let i=0;i<arr.length;i++) {
+        kod+=`<li>(${i})${arr[i]}</li>`
+    }
+        we.innerHTML=kod
+        
+    </script>
+</body>
+</html>

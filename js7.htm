@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+
+        <title>Document</title>
+    </head>
+    <body>
+        <ul>
+            
+        </ul>
+        <!-- <button>ok</button>  -->
+        <p></p>
+        <script>
+            let dil = ["az","en","ru","tr"]
+            let ul = document.querySelector("ul")
+            let kod= ''
+            dil.forEach (function(lang) {
+               kod+=`<li><label><input onclick="check()" type="checkbox" value="${lang}" />${lang}</label></li>`
+            })
+            ul.innerHTML=kod
+           /* document.querySelector("button").onclick=function() {
+             let msg = ''
+             let inps = document.querySelectorAll("[type=checkbox]")
+             inps.forEach(function(input) {
+               if (input.checked) msg+=input.value +  ", "
+             }) */
+             function check() {
+                let msg = ''
+             let inps = document.querySelectorAll("[type=checkbox]")
+             inps.forEach(function(input) {
+               if (input.checked) msg+=input.value +  ", "
+             })
+             document.querySelector("p").innerHTML="secilen diller :" +msg
+             }
+            
+        </script>
+    </body>
+</html>

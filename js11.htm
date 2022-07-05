@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body {margin: 0;}
+        #yagis {height: 100vh;position: relative;overflow: hidden; }
+        #yagis > div {position: absolute;}
+        #cicek {font-size: 2em; color: orange;}
+    </style>
+</head>
+<body>
+    <div id="yagis">
+    </div>
+    <script>
+        const yagis = {
+            elem: document.getElementById("yagis"),
+            tip:['🌼','🌸','🏵','🌺'],
+            color: ['red','orange','green','blue'],
+            arr:[],
+            create() {
+                let cicek = {
+                    id:`c${this.arr.length}`,
+                    elem:'',
+                    x:rand(0,this.elem.offsetWidth),
+                    y:0,
+                    tip:this.tip[rand(0, this.tip.length-1)],
+                    size:rand(20,30)/10,
+                    color:this.color[rand(0,this.tip.length-1)],
+                    speed: rand(1,10)
+                    
+                }
+                this.arr.push(cicek)
+                let div = document.createElement("div")
+                let tip=document.createTextNode(cicek.tip)
+                div.id= cicek.id
+                div.appendChild(tip)
+                this.elem.appendChild(div)
+            },
+            move() {
+                this.arr.forEach(cicek => {
+                    let x=cicek.x+50*Math.sin(cicek.y/50)
+                    cicek.elem=document.getElementById(cicek.id)
+                         if (cicek.y<yagis.elem.offsetHeight-cicek.elem.offsetHeight) cicek.y+=cicek.speed
+                         cicek.elem.style.left=x+"px"   
+                         cicek.elem.style.top=cicek.y+"px"   
+                         cicek.elem.style.fontSize=cicek.size+"em"
+                         cicek.elem.style.color=cicek.color
+                        //  cicek.elem.style.animationDuration=cicek.speed+"s"
+                        // cicek.elem.style.top=cicek.speed+"px"
+                    
+                });
+            }
+          }
+          setInterval(()=>{yagis.create()},1000)
+          setInterval(()=>{yagis.move()},40)
+   
+        // setInterval(cicekHer,40)
+      
+        function rand(min,max) {
+
+            return Math.floor(Math.random()*(max-min+1))+min
+          }
+                    
+    </script>
+</body>
+</html>

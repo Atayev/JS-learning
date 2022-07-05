@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    
+    <input type="number" name="" id="il"  placeholder="tevellud" >
+    <input type="text" name="" id="ad" placeholder="Adiniz nedir">
+    <button id="button">ok</button>
+    <h2 id="message"></h2>
+    
+    <script>
+        const il=document.getElementById("il")
+        const ad=document.getElementById("ad")
+        const button=document.getElementById("button")
+        const message=document.getElementById("message")
+        const d=new Date()
+
+        d.getFullYear()-10
+        il.setAttribute('max', d.getFullYear()-10)
+        il.setAttribute('min', d.getFullYear()-60)
+
+        il.onblur = function() {
+            if (d.getFullYear()-il.value < 16)  ad.setAttribute('placeholder',"Adin nedir?")
+            else  ad.setAttribute('placeholder',"Adiniz nedir?")    
+        }
+        
+        button.onclick = function() {
+            if (d.getFullYear()-il.value < 16) message.innerHTML="Salam bala"
+            else if(d.getFullYear()-il.value <30) message.innerHTML="salam qaqa"
+            else  message.innerHTML="salam dayi" 
+        } 
+
+       
+    </script>
+</body>
+</html>

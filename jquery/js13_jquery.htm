@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+        <style>
+            ul {list-style: none; padding: 0;}
+            li { border-bottom: 1px solid gray; padding: 5px; margin: 5px;}
+            li button {float: right;}
+            .active {background: blue!important}
+        </style>
+    </head>
+    <body>
+        <div><input type="text" name="" id="">
+            <button id="add">+</button>
+            
+            <ul>
+
+            </ul>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>  
+        <script>
+            $(()=>{
+                $("ul").before("<h2>Siyahi</h2>") //after
+                $("#add").click(()=> {
+                  $("ul").append("<li>" + $("input").val() + "<button>Sil</button></li>") //prepend
+                  $("input").val("")
+
+                $("ul>li>button").click(function(){
+                    $(this).parent().remove()
+               })
+
+
+                  $("li") //.on-a bax w3
+                    .mouseenter(function(){
+                         $(this).css({background: "yellow"})
+                     })
+                    .mouseleave(function(){
+                         $(this).css({background: "none"})
+                     })  
+                    .click(function() {
+                         $(this).toggleClass("active") //add,remove,toggle
+                     })
+                })
+            })
+        </script>
+    </body>
+</html>

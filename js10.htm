@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        table {border-collapse: collapse; margin: 50px auto;}
+        td {width: 50px; height: 50px; text-align: center; border: 1px solid #666;}
+    </style>
+</head>
+<body>
+    <table id="cedvel"></table>
+    
+    <script>
+      const cedvel=document.getElementById("cedvel")
+      let novbe=1
+      let hol = [] 
+      let arr= [""]
+      let data= []
+      for (let i = 1; i <= 15;i++){
+                    arr.push(i)
+            }
+            for (let i = 1; i <= 4;i++){
+                data[i]=[]
+                 for (let j = 1; j <=4; j++){
+                let inx = rand (0,arr.length-1)
+                    data[i][j]= arr[inx]
+                    if (arr[inx]== "") hol = [i, j]
+                    arr.splice(inx, 1)
+            }
+               
+         }
+         show()
+        function show() {
+        let kod = ''
+        for (let i = 1; i <= 4;i++){
+                kod+=`<tr>`
+            for (let j = 1; j <=4; j++){
+                kod+=`<td id="x${i}${j}" onclick="swipe(${i}, ${j})">${data[i][j]}</td>`
+            }
+                kod+='</tr>'
+         }
+            cedvel.innerHTML=kod
+        }
+            function swipe(i, j){                
+                if (i == hol[0] && Math.abs(j - hol[1]) == 1 ||
+                    j == hol[1] && Math.abs(i - hol[0]) == 1) {
+                       
+                        let elm1 = document.getElementById(`x${i}${j}`)
+                        let elm2 = document.getElementById(`x${hol[0]}${hol[1]}`)
+                        elm2.innerHTML = elm1.innerHTML
+                        elm1.innerHTML = ""
+                        hol= [i, j]
+                        check()
+                    }
+                 
+         }
+            function check() {
+                for (let i = 1; i <= 4;i++){
+                for (let j = 1; j <=4; j++){
+              if (data[i][j]!=novbe++) { 
+                 console.log("davam")
+                 return }
+            }
+               alert("congrats")
+         }
+
+            }
+            function rand(min,max) {
+
+            return Math.floor(Math.random()*(max-min+1))+min
+        }
+      
+
+
+    </script>
+</body>
+</html>

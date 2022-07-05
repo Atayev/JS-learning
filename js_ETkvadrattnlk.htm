@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input {width: 25px;}
+    </style>
+</head>
+<body>
+
+    <input id="a" type="text" /> х² + 
+    <input id="b" type="text" /> x + 
+    <input id="c" type="text" />
+    <button onclick="kk()">=</button> 0
+    <span id="cavab"></span>
+
+    <script>
+        const a=document.getElementById("a")
+        const b=document.getElementById("b")
+        const c=document.getElementById("c")
+        const cavab=document.getElementById("cavab")
+        
+        function kk() {
+        var d=Math.pow(Number(b.value),2)-(4*Number(a.value)*Number(c.value))
+        var k=Math.sqrt(d)
+        var x,y
+            if(d > 0) {
+                x=((-1*Number(b.value))+k)/(2*Number(a.value))
+                y=((-1*Number(b.value))-k)/(2*Number(a.value))
+                cavab.innerHTML=`cavablar: x1:${x} ve x2: ${y}`
+            }
+            else if ( d==0) {
+                x=(-1*Number(b.value))/(2*Number(a.value))
+                cavab.innerHTML=`cavablar x1=x2=${x}`
+            }
+            else  cavab.innerHTML="tenliyin koku yoxdur"
+        }   
+
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>slider</title>
+        <style>
+            #slider {
+                width: 80%;
+                height: 50vh;
+                box-shadow: 0 0 10px #333;
+                margin: auto;
+                display: flex;
+                justify-content: space-between;
+            
+            }
+            #slider button {
+                border: none;
+                outline: none;
+                background: none;
+                font-size: 5em;
+                color: #ffffff80;
+                user-select: none;
+                transition: 1s;
+                
+            }
+            #slider button:hover {color: #fff;}
+            #thumbs {text-align: center;}
+            #thumbs img { width: 30px ; height: 30px; border-radius: 50%; margin: 5px; }
+        </style>
+    </head>
+    <body>
+        <div id="slider">
+            <button onclick="change(-1)">⮜</button>
+            <button onclick="change()">⮞</button>
+        </div>
+         <div id="thumbs">
+
+         </div>
+        <script>
+            const slider=document.getElementById("slider")
+            const thumbs=document.getElementById("thumbs")
+            let x = 1
+            let timer = setTimeout(change,1, 0)
+           // x+=-1
+            let kod= ''
+            for (let i = 1; i < 9;i++) {
+                kod+=`<img  src="img/${i}.jpg" onclick="klik(${i})"/>`
+            }
+            function klik(i){
+                    x=i
+                    change(0)
+                }
+           thumbs.innerHTML=kod
+            function change (dx=1) {
+                clearTimeout(timer)
+                x+=dx
+                if (x<1) x=9
+                if (x>9) x=1
+                slider.style.background= `url('img/${x}.jpg') center/cover`
+                timer=setTimeout(change,3000)
+                }
+        </script>
+    </body>
+</html>

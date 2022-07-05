@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body {background: #99a8bb;}
+       .dsection, .data {display: table; margin: auto; padding: 30px;background: #4e6190; box-shadow: #124c81 0px 5px 15px; color:whitesmoke;}
+       .dsection {border-radius: 10px 10px 0 0px;}
+       .data{border-radius: 0 0 10px 10px;}
+       button {height: 30px;padding: 5px; margin:5px;text-transform: uppercase; font:1em "Arial"; color: wheat; border-radius: 5px; background: #124c81; border:none;}
+        #todo,th,td {width: 326px;  border-collapse: collapse;margin: 19px; padding: 5px; font-family: "arial"; color: 	#99a8bb; }
+        td { text-align: center; border-top: 1px solid #124c81;}
+        h2 {text-align: center;text-transform: uppercase; font:bold 1.5em "Arial";}
+        input{height: 30px; border: 1px solid wheat;margin:5px;padding: 5px; border-radius: 5px; }
+        h4 {display: none;}
+        
+      
+    </style>
+</head>
+<body>
+    <div class="dsection">
+        <h2>My todo list</h2>
+    <input type="date" name="" id="dates">
+    <input type="text" name="" id="display">
+    <button onclick="add()">add</button>
+    
+    <hr />
+    </div>
+   
+    <div class="data">
+        <table id="todo">
+            <tr>
+                <th>Date</th>
+                <th>Todo</th>
+            </tr>
+        </table>
+        <h4 id="message" >you need to enter SOMETHING</h4>
+    </div>
+   
+   <script>
+       var display=document.getElementById("display")
+       var dates=document.getElementById("dates")
+        var todo=document.getElementById("todo")
+        var r,cel1,cel2
+        function add() {
+            r=todo.insertRow(1)
+            cel1=r.insertCell(0)
+            cel2=r.insertCell(1)
+            cel1.innerHTML=dates.value
+            cel2.innerHTML=display.value
+            var btn=cel2.appendChild(document.createElement("button"))
+            btn.innerHTML='<i class="fas fa-trash-alt"></i>'
+            btn.onclick=function () {
+                r=todo.deleteRow(1)
+            
+           }
+        }
+    
+       
+
+    </script>
+    <script src="https://kit.fontawesome.com/264d4526c7.js" crossorigin="anonymous"></script>
+</body>
+</html>

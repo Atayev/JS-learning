@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body { margin: 0; }
+        #stars {height: 100vh; position: relative; overflow: hidden;}
+        #stars > div {position: absolute;}
+    </style>
+</head>
+<body>
+    <div id="stars"></div>
+    
+    
+    <script>
+        const stars = {
+            elem: document.getElementById("stars"),
+            // type: ['NICAT GÖT'],
+            type: ['✫','☆','⚝','✪'],
+            color: ['red','orange','blue','green','yellow','purple'],
+            arr: [],
+            create() {
+                let star = {
+                    id:`s${this.arr.length}`,
+                    elem:'',
+                    x: rand(0, this.elem.offsetWidth),
+                    y:0,
+                    type: this.type[rand(0,this.type.length-1)],
+                    size: rand(20,30)/10 + 'em',
+                    color:this.color[rand(0,this.color.length-1)],
+                    speed:rand(1,5)
+
+                }
+                this.arr.push(star)
+                    let div= document.createElement("div")
+                    let type= document.createTextNode(star.type)
+                    div.id= star.id
+                    div.appendChild(type)
+                    this.elem.appendChild(div)
+            },
+            move() {
+                this.arr.forEach(star => {
+                    star.elem = document.getElementById(star.id)
+                    if (star.y < stars.elem.offsetHeight- star.elem.offsetHeight) star.y+=star.speed
+                    star.elem.style.top=star.y+"px"
+                    star.elem.style.left=star.x+"px"
+                    star.elem.style.fontSize=star.size
+                    star.elem.style.color=star.color
+                    
+                });
+            }
+        }
+
+        setInterval (()=>{ if (stars.arr.length-1!=50 )stars.create()}, 500 )
+        setInterval (()=>{ stars.move()}, 40 )
+    //    const star = {
+    //        elem:document.getElementById("s1"),
+    //        y:0
+    //    }
+        
+        //setInterval(()=>{
+        // if (y<yagis.elem.offsetHeight) y++ 
+        // star.elem.style.top=y + "px"
+        // },40)
+      
+        function rand(min,max) {
+
+            return Math.floor(Math.random()*(max-min+1))+min
+            }
+    </script>
+</body>
+</html>

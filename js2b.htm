@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .calculator { display: table; margin: auto; padding: 30px;
+                      border-radius:10px; box-shadow: 0 0 10px #333;background: #333;
+                    }
+        #display {width: 250px; height: 40px; margin: 5px; text-align: right; outline: none; border: 1px solid #666; box-shadow: inset 1px 1px 1px #333; border-radius: 5px;}
+        button{width: 40px; height:40px;margin: 5px; box-shadow: 1px 1px 1px #333;}
+        button:active{ box-shadow: 0 0 1px #333;}
+        .silver {background: #666;}
+        .gray { background: gray; }
+        .blue { background: blue;  width: 94px;}
+        .orange { background: orange;}
+        .silver ,.blue,.gray,.orange {color: #fff; border: 1px solid #333;}
+    </style>
+</head>
+    <body>
+        <div class="calculator">
+                <div><input type="text" id="display" name="" id=""></div>
+            
+            <div>
+                <button onclick="press('7')">7</button>
+                <button onclick="press('8')">8</button>
+                <button onclick="press('9')">9</button>
+                <button onclick="back()" class="silver"><-</button>
+                <button onclick="clean()" class="orange">C</button>
+            </div>
+            <div>
+                <button onclick="press('4')">4</button>
+                <button onclick="press('5')">5</button>
+                <button onclick="press('6')">6</button>
+                <button onclick="press('*')" class="gray">x</button>
+                <button onclick="press('/')" class="gray">/</button>
+            </div>
+            <div>
+                <button onclick="press('1')">1</button>
+                <button onclick="press('2')">2</button>
+                <button onclick="press('3')">3</button>
+                <button onclick="press('-')" class="gray">-</button>
+                <button onclick="press('+')" class="gray">+</button>
+            </div>
+            <div>
+                <button class="silver">+/-</button>
+                <button onclick="press('0')">0</button>
+                <button onclick="press('.')" class="gray">.</button>
+                <button onclick="calc()" class="blue"> = </button>
+            </div>   
+         </div>
+
+         <script>
+             const display= document.getElementById("display")
+
+             function press(x) {
+                 display.value+=x
+             }
+             function calc() {
+                 display.value=eval(display.value)
+             }
+             function clean() {
+                display.value="";
+             }
+             function back() {
+                 display.value=display.value.slice(0,-1)
+             }
+         </script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #slider{
+            width: 50%; height: 50vh; margin: auto; box-shadow: 0 0 5px gray;
+            position: relative; overflow: hidden;
+        }
+        #slider>* {
+            position: absolute;
+           
+        }
+        #slider>button {font-size: 2em; background: black; border: none; color: white; border-radius: 10px;}
+        #slider>button { top: 50%; }
+        #next {right: 0;}
+        #slider>button:hover {background: white; color: black;}
+        #slider>button:active {box-shadow: 0 3px #666;transform: translateY(4px);}
+        #slide {width: 100%; height: 100%; top: 0;
+        }
+        #thumbs {bottom: 0; left: 50%; transform: translate(-50%,0); }
+        #thumbs>img { width: 20px; height: 20px; border-radius: 50%; margin: 5px; border:3px solid white}
+    
+    </style>
+</head>
+<body>
+    <div id="slider"></div>
+    <script src="https://kit.fontawesome.com/264d4526c7.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>  
+    <script>
+        $(()=>{
+            const image= ["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg","7.jpg","8.jpg","9.jpg",]
+            let x=0
+            let timer
+            
+            $("#slider")
+            .append ('<div id="slide"></div>')
+            .append('<button id="prev"></button>')
+            .append('<button id="next"></button>')
+            .append ('<div id="thumbs"></div>')
+            
+
+            $("#next").html(`<i class="fas fa-angle-right"></i>`)
+            $("#prev").html(`<i class="fas fa-angle-left"></i>`)
+
+            image.forEach(img => {
+                $("#thumbs").append(`<img src="../img/${img}"/>`)
+            });
+            $("#thumbs>img").click (function(){
+                x=$(this).index()
+                change(0)
+            })
+       
+            change(0)
+            $("#next").click(()=>{
+                change()
+            })
+            $("#prev").click(()=>{
+               change(-1)
+            }) 
+
+            function change (dir=1) {
+                clearInterval(timer)
+                x+=dir
+                if(x>image.length-1) x=0
+                if(x<0) x=image.length-1
+                show(dir)
+                timer= setTimeout(change,3000)
+
+            }
+          function show(dir) {
+            if (dir==0) dir=1 // dir=
+            $("#slide")
+                .css({
+                    left:`${100*dir}%`,
+                    background:`url('../img/${image[x]}') center/cover`
+
+                })
+                .animate ({left:0 }, 500 , ()=> {
+                    $("#slider").css({background:`url('../img/${image[x]}') center/cover`})
+                })
+            
+            // $("#slide") // 1-ci variant
+            // .fadeOut(1000, function () {
+            //     $(this)
+            //     .css({background:`url('../img/${image[x]}') center/cover`})
+            // .fadeIn(1000)
+            // }) 
+           
+          }
+        })
+    </script>
+</body>
+</html>

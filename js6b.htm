@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+        <style>
+            #oyun { width: 800px; height: 600px; margin: 50px auto; box-shadow: 0 0 10px #333; position: relative;}
+            #oyun>div {position: absolute;}
+            #ball {width: 30px ; height: 30px; border-radius: 50%; background:red;}
+            #bar {width: 150px; height: 10px; background: blue; bottom:0;}
+        </style>
+    </head>
+    <body>
+        <div id="oyun">
+            <div id="ball"></div>
+            <div id="bar"></div>
+        </div>
+        <script>
+            const board=document.getElementById("oyun")
+            const ball=document.getElementById("ball")
+            const bar=document.getElementById("bar")
+            let boardWidth=800
+            let ballY=0
+            let ballX=0
+            let barX=0
+            let dy=5
+            let dx=5
+            let dxb=15
+            setInterval(ballMove, 40)
+           
+            function ballMove() {
+                if (ballY<0 || ballY>=560 ) dy*=-1
+                if (ballX<0 || ballX>=770 ) dx*=-1
+                ballY+=dy
+                ballX+=dx
+                ball.style.top=ballY+"px"
+                ball.style.left=ballX+"px"
+            }
+            document.onkeydown = barMove
+
+            function  barMove (e) {
+                if(e.keyCode==37 && barX>0) barX-=10
+                if(e.keyCode==39 && barX<650) barX+=10
+
+                bar.style.left=barX+"px"
+
+            }
+      
+            // document.addEventListener ('keydown',barMove)
+            // function barMove (e) {
+            //        switch (e.key) {
+            //            case 'ArrowLeft': 
+            //                dxb*=-1 
+            //                barX+=dxb
+            //                bar.style.left=barX+"px"
+            //                break;
+            //             case 'ArrowRight':
+            //                 barX+=dxb
+            //                 bar.style.left=barX+"px"
+            //                 break;
+            //        }
+               
+                 
+                  
+               
+            
+        
+        </script>
+    </body>
+</html>

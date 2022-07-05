@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p></p>
+    
+    <script>
+        let kod=''
+        let dec=0
+        for (let i = 0; i < 8; i++) {
+           kod+=`<input type="checkbox" />`
+        }
+        document.querySelector("p").innerHTML=kod + 
+        '<button onclick="change()"> = </button><span></span>'
+        function change() {
+         let checks= document.querySelectorAll("[type=checkbox]")
+         let bin = ''
+         checks.forEach (function(inp, i) {
+             if (inp.checked) {
+                bin +='1'
+                dec+=2**(7 - i)
+             }
+             else bin+='0'
+         })
+         document.querySelector("span").innerHTML=bin+  "<sub>2</sub> ="
+         + dec +  "<sub>10</sub>"
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   
+    <title>Document</title>
+    <style>
+        table {border-collapse: collapse; margin: 50px auto;}
+        td {width: 50px; height: 50px; text-align: center; border: 1px solid #666;}
+    </style>
+</head>
+<body>
+    <table id="cedvel"></table>
+   
+   
+    <script>
+        let kod=''
+        
+        const cedvel= document.getElementById ("cedvel")
+        for (let i = 1; i <= 7;i++){
+            let x=0
+            // let x = i //damalari sira reqemi uzerine chixmagi uchun evvel
+            // x=i // 1ci setir nomresi
+            kod+=`<tr>`
+        for (let j = 1; j <=7; j++){
+            
+          // let x= (j % 2) ? j : '' // tek sutunlar
+          // let x =(j+i)%2 ? '' : j  // cut sutunlar
+          // let x= (j==i) ? '*' : '' // duz dioqanal
+          // let x= (j+i==6) ? '*' : '' // ters diqoanal
+          //  let x = (j<=i) ? j : '' // dolu dioq j<=i i<=j ola biler
+             // let x = (i=1) ? j : (i==2) ? ',' :''
+             if ((i<=j && i+j<=8)||(i>=j && i+j>=8)) {
+               if (j<=4) x++ 
+               else x--
+             }
+               else x=''
+
+            kod+=`<td>${x}</td>` // x++ sira reqemi, setir nomresi ++
+            }
+         }
+        
+        
+        kod+='</tr>'
+        cedvel.innerHTML=kod
+    </script>
+    
+</body>
+</html>

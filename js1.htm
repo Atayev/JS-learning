@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+    </head>
+    <body>
+        <input id="fnumber" type="text" style="width: 50px;"/>
+        <input id="snumber" type="text" style="width: 50px;"/>
+        <input id="tnumber" type="text" style="width: 50px;"/>
+        <button onclick="kalk()" style="border-radius: 5px;">ok</button> 
+        <p><span id="cavab"></span></p>
+
+        <input type="text" id="name1" style="width: 75px;" />
+        <button onclick="swap()" style="width:50px;"><==></button>
+        <input type="text" id="name2" style="width: 75px;" />
+
+    <script>
+             const fnumber = document.getElementById("fnumber")
+             const snumber = document.getElementById("snumber")
+             const tnumber=  document.getElementById("tnumber")
+            function kalk() {
+                let c = Number(fnumber.value)+Number(snumber.value)+Number(tnumber.value)
+                let d = Number(fnumber.value)*Number(snumber.value)*Number(tnumber.value)
+                let o = (Number(fnumber.value)+Number(snumber.value)+Number(tnumber.value))/3
+                cavab.innerHTML =  `cem:${c} <p>hasil:${d}</p> <p>orta:${o}</p>`
+            }
+            const name1 =document.getElementById("name1")
+            const name2 =document.getElementById("name2")
+            function swap() {
+                
+                let f=name1.value
+                name1.value=name2.value
+                name2.value=f
+
+            }
+      /* let ad= prompt("ad nedir")
+       document.write(`<h1>Salam  ${ad}  </h1>`)
+        
+      document.write('<h1>Salam '+ ad +' </h1>') 
+        
+        console.log('Hello World')
+        window.alert("Hello World") */
+
+ </script>
+    </body>
+</html>

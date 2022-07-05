@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+       <style>
+          table {border-collapse: collapse; margin: 50px auto;}
+          td {width: 50px; height: 50px; text-align: center; border: 1px solid #666;}
+          span {margin:100px auto;padding: auto;color: red;}
+    </style> 
+    </head>
+    <body>
+        <span id="infos"></span>
+        <table id="cedvel"></table>
+        
+
+        <script>
+           let infos=document.getElementById("infos")
+            let t=10
+            
+            //countdown 
+            let c= setInterval(()=>{
+                document.querySelector("caption").innerHTML=t--
+                if (t==0) {
+                  f= document.querySelector("caption").innerHTML="you lose"
+                    clearInterval(c)
+                    setTimeout(reset,3000)
+            }
+                
+                
+            },1000)
+            let kod=`<caption>${t}</caption>`
+            let novbe=1
+            let arr= []
+            const cedvel=document.getElementById("cedvel")
+            //array elements push
+            for (let i = 1; i <= 16;i++){
+                    arr.push(i)
+
+            }
+            //table elements
+            for (let i = 1; i <= 4;i++){
+                kod+=`<tr>`
+
+            for (let j = 1; j <=4; j++){
+                    let inx = rand (0,arr.length-1)
+                    kod+=`<td onclick="vur(this)">${arr[inx]}</td>`
+                    arr.splice(inx, 1)
+            }
+                kod+='</tr>'
+         }
+        
+        cedvel.innerHTML=kod
+         //change color
+         function vur(elm) {
+             if (elm.innerHTML==novbe){
+                  elm.style.background="#aaa"
+                  novbe++
+        } else {
+            infos.innerHTML="... THE GAME WILL BE RESTARTED"
+            setTimeout(reset,2000)
+        }
+        
+        
+             
+         }
+        function rand(min,max) {
+
+            return Math.floor(Math.random()*(max-min+1))+min
+        }
+        
+        function reset() {
+            location.reload()
+        }
+
+            
+
+        </script>
+        
+    </body>
+</html>
